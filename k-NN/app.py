@@ -13,7 +13,7 @@ testExpectedResultList = testSet[1]
 
 classification = VectorClassification(trainingSet)
 
-result = classification.classifyItems(testValueList,5 )
+result = classification.classifyItems(testValueList,5)
 
 i = 0
 for v in result:
