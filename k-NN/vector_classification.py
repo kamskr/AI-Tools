@@ -12,7 +12,7 @@ class VectorClassification:
         distanceList.sort(key=lambda tup: tup[0])
 
         listOfKResults = distanceList[:accuracy]
-        
+        print(accuracy)        
         extractedKeys = [x[1] for x in listOfKResults]
         
         return  testVector ,max(set(extractedKeys), key=extractedKeys.count)
