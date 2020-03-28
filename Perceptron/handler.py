@@ -60,29 +60,9 @@ def calculateFromTestSet(parser, learningRate, thresholdE, maxIterations):
     stringResult += "s"
     return stringResult, percent
 
-# def pickKRange():
-#     sg.theme("DarkAmber")
-#     layout = [
-#         [sg.Text("Select k range", font=("courier", 20))],
-#             [sg.Input()],
-#             [sg.Button("Ok")]]
-
-#     window = sg.Window("k-NN Algorithm", layout)
-#     event, values = window.read() 
-#     kRange = range(1,int(values[0]))
-#     window.close()
-#     return kRange
-
 def printResult(result):
     sg.theme("DarkAmber")
     layout = [
         [sg.Multiline(default_text=result, font=("courier", 20), size=(100,20))] ]
     window = sg.Window("Perceptron result", layout)
     event, values = window.read()  
-
-# def graphK(kRange, parser):
-#     print("plotting")
-#     plt.plot(kRange,  [float(calculateFromTestSet(parser, k)[1]) for k in kRange])
-#     plt.show()
-
-    # [calculateFromTestSet(parser, k)[1]

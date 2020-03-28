@@ -36,7 +36,7 @@ class VectorClassification:
                 self.deltaRule(vector.vector, d, y, learningRate)
                 iterationError = iterationError + abs(d - y)
             iteration = iteration + 1
-            if iteration >= maxIterations:
+            if iteration >= maxIterations or iterationError <= thresholdE:
                 print(iteration)
                 training = False
 
