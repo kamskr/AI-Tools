@@ -11,6 +11,10 @@ class Parser:
 
     def createNormalizedVector(self, text, language):
         # And normalize
+        vector = self.createSimpleVector(text)
+        return Vector(language, vector)
+
+    def createSimpleVector(self, text):
         counter = Counter(text)
         letterCount = []
         vector = []
@@ -23,4 +27,4 @@ class Parser:
 
         for value in letterCount:
             vector.append(value / vectorLength)
-        return Vector(language, vector)
+        return vector

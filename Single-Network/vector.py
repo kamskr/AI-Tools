@@ -1,4 +1,4 @@
 class Vector:
-    def __init__(self, language, vector):
-        self.language = language
+    def __init__(self, label, vector):
+        self.label = label
         self.vector = vector

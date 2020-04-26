@@ -1,7 +1,7 @@
 import math
 
 class SingleLayer:
-    def __init__(self, *singleNeurons):
+    def __init__(self, singleNeurons):
         self.labels = []
         self.weightMatrix = []
         self.biasVector = []
@@ -12,11 +12,12 @@ class SingleLayer:
             self.biasVector.append(neuron.bias)
             self.numberOfNeurons = self.numberOfNeurons + 1
 
-    def train(self, inputVector, expectedValue, learningRate):
-        # variables
+    def sigmoid(self, x):
+        return 1 / (1 + math.exp(-x))
+
+    def calculateOutput(self, inputVector):
         netVector = []
         y = []
-        expectedOutput = []
 
         # Calculate the net
         n = 0 
@@ -35,9 +36,19 @@ class SingleLayer:
         for value in netVector:
             y.append(self.sigmoid(value))
 
+        return y
+
+    def train(self, inputVector, learningRate):
+        # variables
+        y = []
+        expectedOutput = []
+
+        # calculate output
+        y = self.calculateOutput(inputVector.vector)
+
         # calculate error signal
         for label in self.labels:
-            if label == expectedValue:
+            if label == inputVector.label:
                 expectedOutput.append(1)
             else: 
                 expectedOutput.append(0)
@@ -46,21 +57,42 @@ class SingleLayer:
         i = 0
         for value in expectedOutput:
             errorSignal.append((float(value) - y[i]) * y[i]  * (float(1)-y[i]))
+            i += 1
 
         # Update weight matrix
+        newWeightMatrix = []
+        errorN = 0
+        for weightVector in self.weightMatrix:
+            i = 0
+            newWeight = []
+            for value in weightVector:
+                newWeight.append(value + (learningRate * errorSignal[errorN] * inputVector.vector[i]))
+                i = i + 1
+            errorN = errorN + 1
+            newWeightMatrix.append(newWeight)
+        
+        self.weightMatrix = newWeightMatrix
 
-
-
-
-        print(netVector)
-        print(y)
-        print(expectedOutput)
+        # Update bias vector
+        newBiasVector = []
+        i = 0
         print(errorSignal)
 
+        for bias in self.biasVector:
+            newBiasVector.append(bias - (learningRate * errorSignal[i]))
+            i = i + 1
 
-    def sigmoid(self, x):
-        return 1 / (1 + math.exp(-x))
+        self.biasVector = newBiasVector
+        print(self.biasVector)
 
+    def classify(self, inputVector):
+        output = self.calculateOutput(inputVector)
+        print(self.biasVector)
+        print(output)
+        return self.labels[output.index(max(output))]
+    
+
+    
 
 
 

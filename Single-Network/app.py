@@ -1,13 +1,14 @@
-from directoryScanner import DirectoryScanner
-from singleNeuron import SingleNeuron
-from singleLayer import SingleLayer
+from handler import Handler
 
-scanner = DirectoryScanner()
-englishVectors = scanner.scanDirectory("data/lang/English/", "English")
+directories = {
+    "English": "data/lang/English/",
+    "German": "data/lang/German/",
+    "Polish": "data/lang/Polish/"
+}
 
-englishNeuron = SingleNeuron("English")
-polishNeuron = SingleNeuron("Polish")
-germanNeuron = SingleNeuron("German")
+handler = Handler(directories)
+handler.trainNetwork(200, 1)
 
-layer = SingleLayer(englishNeuron, polishNeuron, germanNeuron)
-layer.train(englishVectors[0].vector, "English", 1)
+handler.classifySingleVector(handler.getSimplecVector("data/lang.test/German/2.txt"))
+# layer.train(englishVectors[0], 1)
+# print(layer.classify(englishVectors[1].vector))
