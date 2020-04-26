@@ -12,7 +12,7 @@ class SingleLayer:
             self.biasVector.append(neuron.bias)
             self.numberOfNeurons = self.numberOfNeurons + 1
 
-    def train(self, inputVector, expectedValue):
+    def train(self, inputVector, expectedValue, learningRate):
         # variables
         netVector = []
         y = []
@@ -46,6 +46,11 @@ class SingleLayer:
         i = 0
         for value in expectedOutput:
             errorSignal.append((float(value) - y[i]) * y[i]  * (float(1)-y[i]))
+
+        # Update weight matrix
+
+
+
 
         print(netVector)
         print(y)

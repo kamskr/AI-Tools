@@ -10,4 +10,4 @@ polishNeuron = SingleNeuron("Polish")
 germanNeuron = SingleNeuron("German")
 
 layer = SingleLayer(englishNeuron, polishNeuron, germanNeuron)
-layer.train(englishVectors[0].vector, "English")
+layer.train(englishVectors[0].vector, "English", 1)
