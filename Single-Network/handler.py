@@ -36,4 +36,22 @@ class Handler:
 
     def classifySingleVector(self, vector):
         result = self.layer.classify(vector)
-        print(result)
+        return result
+
+    def classifyVectorsFromDirectories(self, listOfDirectories):
+        testVectors = []
+        scanner = DirectoryScanner()
+        for label in listOfDirectories:
+            testVectors.extend(scanner.scanDirectory(listOfDirectories[label], label))
+
+        total = 0 
+        correct = 0
+
+        for vector in testVectors:
+            result = self.classifySingleVector(vector.vector)
+            total += 1
+            if result == vector.label:
+                correct += 1
+            
+        print((float(correct)/float(total))*100) 
+

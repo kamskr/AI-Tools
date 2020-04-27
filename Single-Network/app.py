@@ -7,8 +7,14 @@ directories = {
 }
 
 handler = Handler(directories)
-handler.trainNetwork(200, 1)
+handler.trainNetwork(50, 1)
 
-handler.classifySingleVector(handler.getSimplecVector("data/lang.test/German/2.txt"))
+testDirectories = {
+    "English": "data/lang.test/English/",
+    "German": "data/lang.test/German/",
+    "Polish": "data/lang.test/Polish/"
+}
+
+handler.classifyVectorsFromDirectories(testDirectories)
 # layer.train(englishVectors[0], 1)
-# print(layer.classify(englishVectors[1].vector))
+# print(layer.classify(englishVectors[1].vector))ą

@@ -50,7 +50,7 @@ class SingleLayer:
         for label in self.labels:
             if label == inputVector.label:
                 expectedOutput.append(1)
-            else: 
+            else:
                 expectedOutput.append(0)
         
         errorSignal = []
