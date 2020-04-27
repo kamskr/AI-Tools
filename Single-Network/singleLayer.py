@@ -76,19 +76,15 @@ class SingleLayer:
         # Update bias vector
         newBiasVector = []
         i = 0
-        print(errorSignal)
-
         for bias in self.biasVector:
             newBiasVector.append(bias - (learningRate * errorSignal[i]))
             i = i + 1
 
         self.biasVector = newBiasVector
-        print(self.biasVector)
 
     def classify(self, inputVector):
         output = self.calculateOutput(inputVector)
-        print(self.biasVector)
-        print(output)
+        
         return self.labels[output.index(max(output))]
     
 

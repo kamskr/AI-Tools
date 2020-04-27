@@ -2,6 +2,7 @@ from singleNeuron import SingleNeuron
 from directoryScanner import DirectoryScanner
 from singleLayer import SingleLayer
 from parser import Parser
+import matplotlib.pyplot as plt
 
 class Handler:
     # listOfDirectories: dictionary of (class, directory)
@@ -53,5 +54,26 @@ class Handler:
             if result == vector.label:
                 correct += 1
             
-        print((float(correct)/float(total))*100) 
+        return (float(correct)/float(total))*100
+
+    def graphAccuracy(self, numberOfIterations, learningRate):
+        testDirectories = {
+            "English": "data/lang.test/English/",
+            "German": "data/lang.test/German/",
+            "Polish": "data/lang.test/Polish/"
+        }
+        print("plotting")
+        iRange = []
+        for i in range(numberOfIterations):
+            iRange.append(i)
+        
+        acc = []
+        for r in iRange:
+            self.layer = SingleLayer(self.neurons)
+            self.trainNetwork(r, learningRate)
+            acc.append(self.classifyVectorsFromDirectories(testDirectories))
+
+        print(acc)
+        plt.plot(iRange,  acc)
+        plt.show()
 
