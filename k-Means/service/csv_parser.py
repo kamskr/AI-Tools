@@ -1,14 +1,13 @@
 import csv 
-from vector import Vector
+from model.vector import Vector
 
 class CsvParser:
-    def __init__(self, traingingSetFile, testSetFile):
-        self.trainingSetFile = traingingSetFile
-        self.testSetFile = testSetFile
+    def __init__(self, training_set_file):
+        self.training_set_file = training_set_file
 
-    def parseTrainingSet(self):
-        trainingSet = []
-        with open(self.trainingSetFile, 'r') as file:
+    def parse_training_set(self):
+        training_set = []
+        with open(self.training_set_file, 'r') as file:
             reader = csv.reader(file)
             for row in reader:
                 vector = []
@@ -18,24 +17,7 @@ class CsvParser:
                         vector.append(float(v))
                     except ValueError:
                         name = v
-                trainingSet.append(Vector(name, vector))
-        return trainingSet
-                
-    def parseTestSet(self):
-        testVectorList = []
-        expectedResultList = []
-        with open(self.testSetFile, 'r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                vector = []
-                expectedResult = ""
-                for v in row:
-                    try:
-                        vector.append(float(v))
-                    except ValueError:
-                        expectedResult = v
-                testVectorList.append(vector)
-                expectedResultList.append(expectedResult)
-        return testVectorList, expectedResultList
+                training_set.append(Vector(name, vector))
+        return training_set
 
 
