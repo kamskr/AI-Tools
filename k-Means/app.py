@@ -1,21 +1,16 @@
-from model.centroid import Centroid
-from service.csv_parser import CsvParser
-from model.cluster import Cluster
-from service.cluster_classifier import ClusterClassifier
-import numpy as np
+from service.handler import Handler
 
 
-# trainingSet =
-for vector in trainingSet:
-    print(str(vector.vector), ' ', vector.name)
+file_path = "./data/iris.data"
+number_of_clusters = 3
+dimension = 4
 
+handler = Handler(file_path, number_of_clusters, dimension)
+handler.perform_clustering(2)
 
-c = ClusterClassifier(clist, trainingSet)
-
-for cl in c.clusters.values():
-    print(cl)
-
-data = np.array([[2, 2, 4], [5, 6, 7]])
-print(np.average(data, axis=0)[0])
+for vector in handler.cluster_classifier.clusters.values():
+    print(vector.centroid.centroidVector)
+# data = np.array([[2, 2, 4], [5, 6, 7]])
+# print(np.average(data, axis=0)[0])
 
 

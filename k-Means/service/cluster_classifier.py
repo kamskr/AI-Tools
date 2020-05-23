@@ -14,11 +14,12 @@ class ClusterClassifier:
     def classify_vectors(self):
         for vector in self.vectors_to_classify:
             distance = []
-            for cluster in self.clusters:
-                distance.append(vector.calculateDistance(cluster.centroid.centroidVector))
+            for cluster in self.clusters.values():
+                distance.append(vector.calculate_distance(cluster.centroid.centroidVector))
 
             closest_cluster_index = distance.index(min(distance))
             self.clusters.get(closest_cluster_index).assign_vector(vector)
+            vector.assign_to_cluster(closest_cluster_index)
 
-        for cluster in self.clusters:
+        for cluster in self.clusters.values():
             cluster.update_centroid()

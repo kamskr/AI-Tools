@@ -1,7 +1,6 @@
 from model.centroid import Centroid
 from model.vector import Vector
 import numpy as np
-import statistics
 
 
 class Cluster:
@@ -13,9 +12,16 @@ class Cluster:
         self.assigned_vectors.append(vector)
 
     def update_centroid(self):
-        cluster_vectors = np.array()
-        for vector_class in self.assigned_vectors:
-            np.append(cluster_vectors, vector_class.vector, axis=None)
+        if len(self.assigned_vectors) == 0:
+            return
 
-        new_centroid = np.average(cluster_vectors, axis=0)
-        print(new_centroid)
+        cluster_vectors = []
+        counter = 0
+        for vector_class in self.assigned_vectors:
+            cluster_vectors.append(vector_class.vector)
+            counter += 1
+
+        cluster_vector_np = np.array(cluster_vectors)
+        new_centroid = np.average(cluster_vector_np, axis=0)
+        self.centroid.update_centroid(new_centroid)
+        self.assigned_vectors = []
