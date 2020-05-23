@@ -9,8 +9,10 @@ class ClusterClassifier:
         for _ in range(number_of_iterations):
             self.classify_vectors()
 
+        id = 0
         for cluster in self.clusters.values():
-            print(len(cluster.assigned_vectors))
+            print("For cluster with id:", str(id), ":", str(len(cluster.assigned_vectors)))
+            id += 1
 
     def classify_vectors(self):
         for cluster in self.clusters.values():
@@ -23,7 +25,7 @@ class ClusterClassifier:
                 distance.append(self.calculate_distance(vector, cluster.centroid_vector))
 
             closest_cluster_index = distance.index(min(distance))
-            print(str(vector), " distance from centroid ", min(distance))
+            print(str(vector), " distance from centroid ", min(distance), ' ***** ID of Cluster: ', distance.index(min(distance)))
             self.clusters.get(closest_cluster_index).assign_vector(vector)
 
     @staticmethod

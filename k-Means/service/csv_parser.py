@@ -1,6 +1,5 @@
 import csv
 import numpy as np
-from model.vector import Vector
 
 
 class CsvParser:
@@ -28,7 +27,6 @@ class CsvParser:
 
         transposed_list = np.transpose(temp_list)
 
-        i = 0
         for vector in temp_list:
             j = 0
             new_vector = []
@@ -37,6 +35,5 @@ class CsvParser:
                 j += 1
 
             normalized_training_set.append(new_vector)
-            # print(training_set[i].vector)
 
         return normalized_training_set

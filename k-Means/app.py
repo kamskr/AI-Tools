@@ -3,12 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-file_path = "model/iris.data"
+file_path = "data/iris.data"
 number_of_clusters = 3
 dimension = 4
 
 handler = Handler(file_path, number_of_clusters, dimension)
-handler.perform_clustering(1000)
+handler.perform_clustering(40)
 
 # vectors = []
 # for vector in handler.cluster_classifier.vectors_to_classify:

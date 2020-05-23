@@ -1,4 +1,3 @@
-from model.vector import Vector
 import numpy as np
 import random
 
@@ -8,7 +7,7 @@ class Cluster:
         self.centroid_vector = list({random.random() for _ in range(dimension)})
         self.assigned_vectors = []
 
-    def assign_vector(self, vector: Vector):
+    def assign_vector(self, vector):
         self.assigned_vectors.append(vector)
 
     def update_centroid(self):
