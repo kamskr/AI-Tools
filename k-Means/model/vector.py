@@ -18,7 +18,12 @@ class Vector:
             i += 1
 
         distance = math.sqrt(sum_d)
-        return distance, self.name
+        return distance
 
     def assign_to_cluster(self, cluster_id):
         self.cluster_id = cluster_id
+
+    def set_vector(self, vector):
+        self.vector = vector
+
+

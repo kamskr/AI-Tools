@@ -1,4 +1,3 @@
-from model.centroid import Centroid
 from service.csv_parser import CsvParser
 from model.cluster import Cluster
 from service.cluster_classifier import ClusterClassifier
@@ -22,7 +21,7 @@ class Handler:
 
     def create_clusters(self, number_of_clusters, dimension):
         for n in range(number_of_clusters):
-            self.clusters[n] = Cluster(Centroid(dimension))
+            self.clusters[n] = Cluster(dimension)
 
     def create_cluster_classifier(self):
         self.cluster_classifier = ClusterClassifier(self.clusters, self.training_set)

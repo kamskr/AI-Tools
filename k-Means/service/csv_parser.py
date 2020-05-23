@@ -1,4 +1,5 @@
-import csv 
+import csv
+import numpy as np
 from model.vector import Vector
 
 
@@ -12,13 +13,30 @@ class CsvParser:
             reader = csv.reader(file)
             for row in reader:
                 vector = []
-                name = ""
                 for v in row:
                     try:
                         vector.append(float(v))
                     except ValueError:
                         name = v
-                training_set.append(Vector(name, vector))
-        return training_set
+                training_set.append(vector)
 
+        return self.normalize_training_set(training_set)
 
+    def normalize_training_set(self, training_set):
+        normalized_training_set = []
+        temp_list = training_set
+
+        transposed_list = np.transpose(temp_list)
+
+        i = 0
+        for vector in temp_list:
+            j = 0
+            new_vector = []
+            for value in vector:
+                new_vector.append((value - min(transposed_list[j]))/(max(transposed_list[j]) - min(transposed_list[j])))
+                j += 1
+
+            normalized_training_set.append(new_vector)
+            # print(training_set[i].vector)
+
+        return normalized_training_set
