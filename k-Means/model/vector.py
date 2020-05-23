@@ -1,11 +1,12 @@
 import math
 
+
 class Vector:
     def __init__(self, name, vector):
         self.name = name
         self.vector = vector
 
-    def calculateDistance(self, vector):
+    def calculate_distance(self, vector):
         i = 0
         sum = 0
         for v in self.vector:  
@@ -16,9 +17,4 @@ class Vector:
             i += 1
 
         distance = math.sqrt(sum)
-        # print("name ", self.name, " vector ", self.vector, " testing: ", vector, " result ", distance)
-        return  distance, self.name,
-        
-
-    
-
+        return distance, self.name

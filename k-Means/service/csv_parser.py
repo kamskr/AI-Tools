@@ -1,6 +1,7 @@
 import csv 
 from model.vector import Vector
 
+
 class CsvParser:
     def __init__(self, training_set_file):
         self.training_set_file = training_set_file
