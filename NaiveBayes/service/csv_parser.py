@@ -8,15 +8,14 @@ class CsvParser:
 
     def parse_training_set(self):
         training_set = self.parse_set(self.training_set_file)
-        print(training_set)
         return training_set
 
     def parse_test_set(self):
         test_set = self.parse_set(self.test_set_file)
-        print(test_set)
         return test_set
 
-    def parse_set(self, data_file):
+    @staticmethod
+    def parse_set(data_file):
         parsed_set = []
         with open(data_file, 'r') as file:
             reader = csv.reader(file)
