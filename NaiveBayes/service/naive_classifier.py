@@ -23,9 +23,22 @@ class NaiveClassifier:
             result, expected_output = self.classify_row(row)
             if result == expected_output:
                 correct += 1
+        tp = self.confusion_matrix["true_positives"]
+        tn = self.confusion_matrix["true_negatives"]
+        fp = self.confusion_matrix["false_positives"]
+        fn = self.confusion_matrix["false_negatives"]
 
+        accuracy = (tp + tn)/(tp + tn + fp + fn)
+        precision = tp/(tp + fp)
+        recall = tp/(tp + fn)
+        f1_score = (2 * precision * recall)/(precision + recall)
         print("total rows: ", total_rows, "correct:", correct)
         print("Confusion matrix:", self.confusion_matrix)
+        print("Accuracy:", accuracy)
+        print("Precision:", precision)
+        print("Recall:", recall)
+        print("F1 score:", f1_score)
+
 
     def classify_row(self, row: dict):
         probability_of_classification = dict()
