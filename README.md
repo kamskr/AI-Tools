@@ -2,26 +2,26 @@
 
 AI Tools
 
-# K-nn
+## K-nn
 
 K nearest neighbours alhorithm used to diffrenciate between 3 types of flowers
 
-# Perceptron
+## Perceptron
 
 Artificial neuron used to diffrenciate between 2 types of flowers
 
-# Singlelayer Network
+## Singlelayer Network
 
 Multilayer network created to recognize language of the text
 
-# K-Means
+## K-Means
 
 Cluster classifier
 
-# NaiveBayas
+## NaiveBayas
 
 Calculating result based on probabilities using Naive Bayas
 
-# KnapsackProblem
+## KnapsackProblem
 
 Optimalization task. Picking the best combination using brute force
