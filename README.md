@@ -25,3 +25,11 @@ Calculating result based on probabilities using Naive Bayas
 ## KnapsackProblem
 
 Optimalization task. Picking the best combination using brute force
+
+## Hill Climb
+
+Soliving the Travelling Salesman Problem with Hill Climb algorithm
+
+## Simulated Annealing
+
+Soliving the Travelling Salesman Problem with Simulated Annealing algorithm
