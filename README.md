@@ -26,10 +26,6 @@ Calculating result based on probabilities using Naive Bayas
 
 Optimalization task. Picking the best combination using brute force
 
-## Hill Climb
+## Local Search (Hill Climb and Simulated Annealing)
 
-Soliving the Travelling Salesman Problem with Hill Climb algorithm
-
-## Simulated Annealing
-
-Soliving the Travelling Salesman Problem with Simulated Annealing algorithm
+Soliving the Travelling Salesman Problem with Hill Climb and Simulated Annealing algorithms
