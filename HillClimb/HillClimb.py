@@ -1,9 +1,9 @@
 
-
 def create_data_model():
     """Stores the data for the problem."""
-    data = {}
-    data['distance_matrix'] = [
+    data_dict = dict()
+    data_dict['cities'] = ["New York", "Los Angeles", "Chicago", "Minneapolis", "Denver", "Dallas", "Seattle", "Boston", "San Francisco", "St. Louis", "Houston", "Phoenix", "Salt Lake City"]
+    data_dict['distance_matrix'] = [
         [0, 2451, 713, 1018, 1631, 1374, 2408, 213, 2571, 875, 1420, 2145, 1972],
         [2451, 0, 1745, 1524, 831, 1240, 959, 2596, 403, 1589, 1374, 357, 579],
         [713, 1745, 0, 355, 920, 803, 1737, 851, 1858, 262, 940, 1453, 1260],
@@ -17,9 +17,22 @@ def create_data_model():
         [1420, 1374, 940, 1056, 879, 225, 1891, 1605, 1645, 679, 0, 1017, 1200],
         [2145, 357, 1453, 1280, 586, 887, 1114, 2300, 653, 1272, 1017, 0, 504],
         [1972, 579, 1260, 987, 371, 999, 701, 2099, 600, 1162, 1200, 504, 0],
-    ]  # yapf: disable
-    data['num_vehicles'] = 1
-    data['depot'] = 0
+    ]
+    data_dict['num_vehicles'] = 1
+    data_dict['depot'] = 0
+
     return data
+
+
+def tour_length(matrix, tour):
+    total = 0
+    num_cities = len(tour)
+    for i in range(num_cities):
+        j = (i + 1) % num_cities
+        city_i = tour[i]
+        city_j = tour[j]
+        total += matrix[city_i, city_j]
+    return total
+
 
 data = create_data_model()
